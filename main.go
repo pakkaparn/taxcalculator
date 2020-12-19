@@ -17,10 +17,10 @@ type Reader struct {
 
 // IO interface
 type IO interface {
-	getInput() string
+	input() string
 }
 
-func (r Reader) getInput() string {
+func (r Reader) input() string {
 	text, _ := r.reader.ReadString('\n')
 	text = strings.Replace(text, "\n", "", -1)
 
@@ -49,7 +49,7 @@ func askForAnnualIncome(r IO) float64 {
 	fmt.Println("What is you annual income?")
 	fmt.Print("-> ")
 
-	text := r.getInput()
+	text := r.input()
 	income, err := strconv.ParseFloat(text, 2)
 
 	if err != nil {
